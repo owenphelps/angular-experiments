@@ -25,6 +25,9 @@ app.factory('Races', function($http){
   return obj;
 });
 
+app.factory('filterService', function(){
+  return { activeFilters: {} };
+});
 
 app.factory('People', function($http){
   console.log('People');
@@ -38,9 +41,11 @@ app.factory('People', function($http){
 });
 
 
-app.controller('FixturesCtrl', ['$scope', 'Races', function($scope, Races) {
+app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', function($scope, Races, filterService) {
   $scope.races = Races;
   
+  $scope.filterService = filterService;
+
   $scope.selectedFixture = null;
   $scope.selectedRace = null;
   
@@ -72,9 +77,11 @@ app.controller('FixturesCtrl', ['$scope', 'Races', function($scope, Races) {
   $scope.$watch('selectedRace', ensureResultsLoaded);
 }]);
 
-app.controller('AssignmentCtrl', ['$scope', 'People', 'Races', function($scope, People, Races){
+app.controller('AssignmentCtrl', ['$scope', 'People', 'Races', 'filterService', function($scope, People, Races, filterService){
   $scope.people = People;
   $scope.races = Races;
+
+  $scope.filterService = filterService;
   
   $scope.selectedHandicapper = null;
   $scope.selectedRace = null;
