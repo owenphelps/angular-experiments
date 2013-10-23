@@ -1,9 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Welcome</title>
-    </head>
-    <body>
-        <p>Hello world!</p>
-    </body>
-</html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="racing.css">
+  </head>
+<body>
+  
+<div ng-app="handicapperApp">
+  
+  <div ng-controller="FixturesCtrl">
+    
+    <h1>
+      Fixtures
+    </h1>
+    
+    <div class="fixture" ng-class="{selected: fixture==selectedFixture}" ng-repeat="fixture in races.fixtures" ng-click="selectFixture(fixture)">
+      {{fixture.id}} - {{fixture.name}}
+      <div ng-show="fixture==selectedFixture">
+        {{fixture.races.type}} - {{fixture.races.date}} - {{fixture.races.status}}
+      </div>
+    </div>
+    
+    <h2>
+      Races
+    </h2>
+    
+    <div class="race" ng-class="{selected: race==selectedRace}" ng-repeat="race in selectedFixture.races.race | filter:unAssigned" ng-show="selectedFixture" ng-click="selectRace(race)">
+      {{race.type}} - {{race.name}}
+      <div ng-show="race==selectedRace">
+        {{race.results.status}} - {{race.results.winningTime}}
+        <div ng-repeat="pos in race.results.position">
+          {{pos.rank}} - {{pos.horse.name}} -- {{pos.horse.jockey.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h1>
+    Assignments
+  </h1>
+
+  <div ng-controller="AssignmentCtrl">
+  
+    <h2>
+      Handicappers  
+    </h2>
+  
+    <div class="handicapper" ng-class="{selected: handicapper==selectedHandicapper}" ng-repeat="handicapper in people.handicappers" ng-click="selectHandicapper(handicapper)">
+      {{handicapper.id}} - {{handicapper.name}}
+    </div>
+
+    <h2>
+      Races
+    </h2>
+   
+    <div class="race" ng-class="{selected: race==selectedRace}" ng-repeat="race in races.fixtures[0].races.race" ng-click="selectRace(race)">
+      {{race.handicapper.name}} - {{race.type}} - {{race.name}}
+    </div>
+    <button ng-click="assignRace(selectedHandicapper, selectedRace)" ng-disabled="!(selectedHandicapper && selectedRace) || (selectedRace.handicapper==selectedHandicapper)">
+      Assign
+    </button>
+    <button ng-click="unAssignRace(selectedRace)" ng-disabled="!(selectedRace && selectedRace.handicapper)">
+      Unassign
+    </button>
+  </div>
+  
+</div>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="racing.js"></script>
+  
+  </body>  
+  </html>

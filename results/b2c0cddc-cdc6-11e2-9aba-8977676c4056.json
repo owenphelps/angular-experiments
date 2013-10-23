@@ -1,0 +1,52 @@
+{
+      "id": "b0dc3010-cdc6-11e2-9aba-8977676c4056",
+      "dateTime": "2013-06-06T17:55:00+01:00",
+      "status": "full-result",
+      "winningTime": "01:13.000",
+      "position":  [
+         {
+          "rank": 1,
+          "horse":  {
+            "id": "d795685c-a1c5-11e2-9ab9-8977676c4056",
+            "name": "Tea Caddy",
+            "cloth": "8",
+            "status": "Runner",
+            "weight": "145",
+            "jockey":  {
+              "id": "18272ae9-9ea1-5ebc-863f-172ec461db5b",
+              "name": "Brendan Powell"
+            }
+          }
+        },
+         {
+          "rank": 2,
+          "distance": 2,
+          "horse":  {
+            "id": "8731665e-190d-11e2-9ab3-8977676c4056",
+            "name": "Special Account",
+            "cloth": "4",
+            "status": "Runner",
+            "weight": "152",
+            "jockey":  {
+              "id": "e641fb63-832b-5c0a-7ba0-699ab06f384a",
+              "name": "Nick Scholfield"
+            }
+          }
+        },
+         {
+          "rank": 3,
+          "distance": 5,
+          "horse":  {
+            "id": "d795685c-a1c5-11e2-9ab9-8977676c4056",
+            "name": "Tea Caddy",
+            "cloth": "8",
+            "status": "Runner",
+            "weight": "145",
+            "jockey":  {
+              "id": "18272ae9-9ea1-5ebc-863f-172ec461db5b",
+              "name": "Brendan Powell"
+            }
+          }
+        }
+      ]
+}
