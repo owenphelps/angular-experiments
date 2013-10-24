@@ -29,6 +29,10 @@ app.factory('filterService', function(){
   return { activeFilters: {} };
 });
 
+app.factory('raceSelectionService', function(){
+  return {race: null};
+});
+
 app.factory('People', function($http){
   console.log('People');
   var obj = {};
@@ -41,10 +45,11 @@ app.factory('People', function($http){
 });
 
 
-app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', function($scope, Races, filterService) {
+app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', 'raceSelectionService', function($scope, Races, filterService, raceSelectionService) {
   $scope.races = Races;
   
   $scope.filterService = filterService;
+  $scope.raceSelectionService = raceSelectionService;
 
   $scope.selectedFixture = null;
   $scope.selectedRace = null;
@@ -54,7 +59,7 @@ app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', function($sc
   };
   
   $scope.selectRace = function(race){
-    $scope.selectedRace = race;
+    $scope.raceSelectionService.race = race;
   };
   
   $scope.unAssigned = function(race){
@@ -68,8 +73,8 @@ app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', function($sc
   };
   
   var ensureResultsLoaded = function(){
-    if($scope.selectedRace !== null){
-      $scope.races.getRaceResults($scope.selectedRace);
+    if($scope.raceSelectionService.race !== null){
+      $scope.races.getRaceResults($scope.raceSelectionService.race);
     }
   };
   
@@ -77,21 +82,19 @@ app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', function($sc
   $scope.$watch('selectedRace', ensureResultsLoaded);
 }]);
 
-app.controller('AssignmentCtrl', ['$scope', 'People', 'Races', 'filterService', function($scope, People, Races, filterService){
+app.controller('AssignmentCtrl', ['$scope', 'People', 'Races', 'raceSelectionService', function($scope, People, Races, raceSelectionService){
   $scope.people = People;
   $scope.races = Races;
-
-  $scope.filterService = filterService;
   
+  $scope.raceSelectionService = raceSelectionService;
   $scope.selectedHandicapper = null;
-  $scope.selectedRace = null;
   
   $scope.selectHandicapper = function(handicapper){
     $scope.selectedHandicapper = handicapper;
   };
 
   $scope.selectRace = function(race){
-    $scope.selectedRace = race;
+    $scope.raceSelectionService.race = race;
   };
   
   $scope.assignRace = function(handicapper, race){
