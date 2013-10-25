@@ -19,8 +19,16 @@ app.factory('Races', function($http){
     });
   };
 
+  var getHandicapperRaces = function(handicapper){
+    handicapper.races = [];
+    $http.get("handicapper_races/" + handicapper.id + ".json").success(function(data){
+      handicapper.races = data;
+      console.log(data);
+    });
+  };
   obj.getFixtureRaces = getFixtureRaces;
   obj.getRaceResults = getRaceResults;
+  obj.getHandicapperRaces = getHandicapperRaces;
 
   return obj;
 });
@@ -115,5 +123,32 @@ app.controller('AssignmentCtrl',
     race.handicapper = null;
   };
   
+}]);
+
+app.controller('DashboardCtrl',
+               ['$scope', 'People', 'Races', 
+                function($scope, People, Races){
+  $scope.people = People;
+  $scope.races = Races;
+                
+  $scope.selectedHandicapper = null;
+  $scope.selectedRace = null;
+  
+  $scope.selectHandicapper = function(handicapper){
+    $scope.selectedHandicapper = handicapper;
+  };
+
+  $scope.selectRace = function(race){
+    $scope.selectedRace = race;
+  };
+
+  var ensureRacesLoaded = function(){
+    if($scope.selectedHandicapper !== null){
+    $scope.races.getHandicapperRaces($scope.selectedHandicapper);
+    }
+  };
+  
+  $scope.$watch('selectedHandicapper', ensureRacesLoaded);                  
+                  
 }]);
 

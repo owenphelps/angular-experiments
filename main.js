@@ -8,7 +8,8 @@ app.config(function($routeProvider){
     }
                      ).when("/dashboard/",
                             {
-                              templateUrl: "dashboard.html"
+                              templateUrl: "dashboard.html",
+                              controller: "DashboardCtrl"
                             }
   );
 });
