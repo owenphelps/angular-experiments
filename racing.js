@@ -33,6 +33,10 @@ app.factory('raceSelectionService', function(){
   return {race: null};
 });
 
+app.factory('fixtureSelectionService', function(){
+  return {fixture: null};
+});
+
 app.factory('People', function($http){
   console.log('People');
   var obj = {};
@@ -45,17 +49,19 @@ app.factory('People', function($http){
 });
 
 
-app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', 'raceSelectionService', function($scope, Races, filterService, raceSelectionService) {
+app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', 'raceSelectionService', 'fixtureSelectionService',
+                                function($scope, Races, filterService, raceSelectionService, fixtureSelectionService) {
   $scope.races = Races;
   
   $scope.filterService = filterService;
   $scope.raceSelectionService = raceSelectionService;
+  $scope.fixtureSelectionService = fixtureSelectionService;
 
   $scope.selectedFixture = null;
   $scope.selectedRace = null;
   
   $scope.selectFixture = function(fixture){
-    $scope.selectedFixture = fixture;
+    $scope.fixtureSelectionService.fixture = fixture;
   };
   
   $scope.selectRace = function(race){
@@ -67,8 +73,8 @@ app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', 'raceSelecti
   };
   
   var ensureFixtureLoaded = function(){
-    if($scope.selectedFixture !== null){
-    $scope.races.getFixtureRaces($scope.selectedFixture);
+    if($scope.fixtureSelectionService.fixture !== null){
+    $scope.races.getFixtureRaces($scope.fixtureSelectionService.fixture);
     }
   };
   
@@ -78,15 +84,19 @@ app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', 'raceSelecti
     }
   };
   
-  $scope.$watch('selectedFixture', ensureFixtureLoaded);
+  $scope.$watch('fixtureSelectionService.fixture', ensureFixtureLoaded);
   $scope.$watch('raceSelectionService.race', ensureResultsLoaded);
 }]);
 
-app.controller('AssignmentCtrl', ['$scope', 'People', 'Races', 'raceSelectionService', function($scope, People, Races, raceSelectionService){
+app.controller('AssignmentCtrl',
+               ['$scope', 'People', 'Races', 'raceSelectionService', 'fixtureSelectionService',
+                function($scope, People, Races, raceSelectionService, fixtureSelectionService){
   $scope.people = People;
   $scope.races = Races;
   
   $scope.raceSelectionService = raceSelectionService;
+  $scope.fixtureSelectionService = fixtureSelectionService;
+                
   $scope.selectedHandicapper = null;
   
   $scope.selectHandicapper = function(handicapper){
