@@ -6,5 +6,20 @@ app.config(function($routeProvider){
     {
       templateUrl: "assignment.html"
     }
+                     ).when("/dashboard/",
+                            {
+                              templateUrl: "dashboard.html"
+                            }
   );
 });
+
+app.controller('NavigationCtrl', ['$scope', '$location',
+               function($scope,$location){
+                 $scope.locationService = $location;
+                 $scope.gotoDashboard = function(){
+                   $location.path('/dashboard/');
+                 };
+                 $scope.gotoAssignments = function(){
+                   $location.path('/');
+                 };
+               }]);

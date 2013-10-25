@@ -8,7 +8,15 @@
 <body>
 
     <div ng-app="handicapperApp">
-
+      <div ng-controller="NavigationCtrl">
+      <button ng-click="gotoDashboard()">
+      Dashboard
+      </button>
+        <button ng-click="gotoAssignments()">
+          Assignments
+        </button>
+        
+      </div>
         <ng-view></ng-view>
 
     </div>
