@@ -1,0 +1,79 @@
+  <div ng-controller="FixturesCtrl">
+    <div>
+      <select ng-model='filterService.activeFilters.status'>
+        <option ng-repeat="opt in ['Active', 'Dormant']">{{opt}}</option>
+      </select>
+    </div>    
+    <h1>
+      Fixtures
+    </h1>
+    
+    <table class="fixture">
+      <tr>
+        <th>id</th>
+        <th>Course</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Going</th>
+      </tr>
+    <tr ng-class="{selected: fixture==fixtureSelectionService.fixture}"
+        ng-repeat="fixture in races.fixtures | filter:filterService.activeFilters"
+        ng-click="selectFixture(fixture)">
+      <td>{{fixture.id}} </td>
+      <td>{{fixture.name}}</td>
+      <td>{{fixture.type}}</td>
+      <td>{{fixture.date}}</td>
+      <td>{{fixture.status}}</td>
+      <td>{{fixture.advancedGoing}}</td>
+    </tr>
+
+    </table>
+    
+    <h2>
+      Races
+    </h2>
+    
+    <div class="race"
+         ng-class="{selected: race==raceSelectionService.race}"
+         ng-repeat="race in fixtureSelectionService.fixture.races.race | filter:unAssigned"
+         ng-show="fixtureSelectionService.fixture"
+         ng-click="selectRace(race)">
+      {{race.type}} - {{race.name}}
+      <div ng-show="race==raceSelectionService.race">
+        {{race.results.status}} - {{race.results.winningTime}}
+        <div ng-repeat="pos in race.results.position">
+          {{pos.rank}} - {{pos.horse.name}} -- {{pos.horse.jockey.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h1>
+    Assignments
+  </h1>
+
+  <div ng-controller="AssignmentCtrl">
+  
+    <h2>
+      Handicappers  
+    </h2>
+  
+    <div class="handicapper" ng-class="{selected: handicapper==selectedHandicapper}" ng-repeat="handicapper in people.handicappers" ng-click="selectHandicapper(handicapper)">
+      {{handicapper.id}} - {{handicapper.name}}
+    </div>
+
+    <h2>
+      Races
+    </h2>
+
+    <div class="race" ng-class="{selected: race==raceSelectionService.race}" ng-repeat="race in fixtureSelectionService.fixture.races.race" ng-click="selectRace(race)">
+      {{race.handicapper.name}} - {{race.type}} - {{race.name}}
+    </div>
+    <button ng-click="assignRace(selectedHandicapper, raceSelectionService.race)" ng-disabled="!(selectedHandicapper && raceSelectionService.race) || (raceSelectionService.race.handicapper==selectedHandicapper)">
+      Assign
+    </button>
+    <button ng-click="unAssignRace(raceSelectionService.race)" ng-disabled="!(raceSelectionService.race.handicapper)">
+      Unassign
+    </button>
+  </div>
