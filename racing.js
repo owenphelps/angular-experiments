@@ -79,7 +79,7 @@ app.controller('FixturesCtrl', ['$scope', 'Races', 'filterService', 'raceSelecti
   };
   
   $scope.$watch('selectedFixture', ensureFixtureLoaded);
-  $scope.$watch('selectedRace', ensureResultsLoaded);
+  $scope.$watch('raceSelectionService.race', ensureResultsLoaded);
 }]);
 
 app.controller('AssignmentCtrl', ['$scope', 'People', 'Races', 'raceSelectionService', function($scope, People, Races, raceSelectionService){
