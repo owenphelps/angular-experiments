@@ -14,17 +14,17 @@
         <th>Course</th>
         <th>Type</th>
         <th>Date</th>
-        <th>Status</th>
+        <th>Time</th>
         <th>Going</th>
       </tr>
     <tr ng-class="{selected: fixture==fixtureSelectionService.fixture}"
         ng-repeat="fixture in races.fixtures | filter:filterService.activeFilters"
         ng-click="selectFixture(fixture)">
       <td>{{fixture.id}} </td>
-      <td>{{fixture.name}}</td>
+      <td>{{fixture.course}}</td>
       <td>{{fixture.type}}</td>
       <td>{{fixture.date}}</td>
-      <td>{{fixture.status}}</td>
+      <td>{{fixture.time}}</td>
       <td>{{fixture.advancedGoing}}</td>
     </tr>
 

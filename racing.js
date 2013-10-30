@@ -5,7 +5,7 @@ app.factory('Races', function($http){
   console.log('Races');
   var obj = {fixtures: []};
 
-  $http.get("fixtures.json").success(function(data){obj.fixtures = data;});
+  $http.get("http://owenphelps.pythonanywhere.com/racing/api/fixtures").success(function(data){obj.fixtures = data;});
 
   var getFixtureRaces = function(fixture){
     $http.get("fixtures/" + fixture.id + ".json").success(function(data){
@@ -49,7 +49,7 @@ app.factory('People', function($http){
   console.log('People');
   var obj = {};
   
-  $http.get("handicappers.json").success(function(data){
+  $http.get("http://owenphelps.pythonanywhere.com/racing/api/handicappers").success(function(data){
     obj.handicappers = data;
   });
   
