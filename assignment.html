@@ -4,6 +4,7 @@
         <option ng-repeat="opt in ['Active', 'Dormant']">{{opt}}</option>
       </select>
     </div>    
+    
     <h1>
       Fixtures
     </h1>
@@ -70,10 +71,10 @@
     <div class="race" ng-class="{selected: race==raceSelectionService.race}" ng-repeat="race in fixtureSelectionService.fixture.races.race" ng-click="selectRace(race)">
       {{race.handicapper.name}} - {{race.type}} - {{race.name}}
     </div>
-    <button ng-click="assignRace(selectedHandicapper, raceSelectionService.race)" ng-disabled="!(selectedHandicapper && raceSelectionService.race) || (raceSelectionService.race.handicapper==selectedHandicapper)">
+    <button class="btn" ng-click="assignRace(selectedHandicapper, raceSelectionService.race)" ng-disabled="!(selectedHandicapper && raceSelectionService.race) || (raceSelectionService.race.handicapper==selectedHandicapper)">
       Assign
     </button>
-    <button ng-click="unAssignRace(raceSelectionService.race)" ng-disabled="!(raceSelectionService.race.handicapper)">
+    <button class="btn" ng-click="unAssignRace(raceSelectionService.race)" ng-disabled="!(raceSelectionService.race.handicapper)">
       Unassign
     </button>
   </div>

@@ -2,21 +2,32 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="racing.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+  
+  <link rel="stylesheet" type="text/css" href="racing.css">
+
 </head>
 
 <body>
-
+  
     <div ng-app="handicapperApp">
-      <div ng-controller="NavigationCtrl">
-        <button ng-click="gotoAssignments()">
-          Assignments
-        </button>
-      <button ng-click="gotoDashboard()">
-      Dashboard
-      </button>
+      
+      <nav class="navbar navbar-default" role="navigation">
         
-      </div>
+    <ul class="nav navbar-nav" ng-controller="NavigationCtrl">
+      <li ng-class="{active: activePage=='dashboard'}"><a ng-click="gotoDashboard()">Dashboard</a></li>
+      <li ng-class="{active: activePage=='assignments'}"><a ng-click="gotoAssignments()">Assignments</a></li>
+    </ul>        
+      <button type="button" class="btn btn-default navbar-btn pull-right">Sign in</button>
+        
+      </nav>      
+
         <ng-view></ng-view>
 
     </div>
@@ -24,6 +35,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
     <script type="text/javascript" src="racing.js"></script>
     <script type="text/javascript" src="main.js"></script>
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 
 </body>
 

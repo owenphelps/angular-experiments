@@ -15,12 +15,15 @@ app.config(function($routeProvider){
 });
 
 app.controller('NavigationCtrl', ['$scope', '$location',
-               function($scope,$location){
+               function($scope, $location){
+                 $scope.activePage='assignments';
                  $scope.locationService = $location;
                  $scope.gotoDashboard = function(){
                    $location.path('/dashboard/');
+                   $scope.activePage='dashboard';
                  };
                  $scope.gotoAssignments = function(){
                    $location.path('/');
+                   $scope.activePage='assignments';
                  };
                }]);
