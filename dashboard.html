@@ -3,27 +3,21 @@
 </h1>
 
 
-  <div>
-  
+<div>
+
     <h2>
       Handicappers  
     </h2>
-  
-    <div class="handicapper"
-         ng-class="{selected: handicapper==selectedHandicapper}"
-         ng-repeat="handicapper in people.handicappers"
-         ng-click="selectHandicapper(handicapper)">
-      {{handicapper.id}} - {{handicapper.name}}
+
+    <div class="handicapper" ng-class="{selected: handicapper==selectedHandicapper}" ng-repeat="handicapper in people.handicappers" ng-click="selectHandicapper(handicapper)">
+        {{handicapper.id}} - {{handicapper.name}}
     </div>
 
     <h2>
       Races
     </h2>
 
-    <div class="race"
-         ng-class="{selected: race==selectedRace}"
-         ng-repeat="race in selectedHandicapper.races"
-         ng-click="selectRace(race)">
-      {{race.type}} - {{race.name}}
+    <div class="race" ng-class="{selected: race==selectedRace}" ng-repeat="race in selectedHandicapper.races" ng-click="selectRace(race)">
+        {{race.type}} - {{race.name}}
     </div>
-  </div>
+</div>

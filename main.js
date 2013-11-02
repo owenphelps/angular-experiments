@@ -1,29 +1,23 @@
 var app = angular.module('handicapperApp');
-
- 
-app.config(function($routeProvider){
-  $routeProvider.when("/",
-    {
-      templateUrl: "assignment.html"
-    }
-                     ).when("/dashboard/",
-                            {
-                              templateUrl: "dashboard.html",
-                              controller: "DashboardCtrl"
-                            }
-  );
+app.config(function($routeProvider) {
+    $routeProvider.when("/", {
+        templateUrl: "assignment.html"
+    }).when("/dashboard/", {
+        templateUrl: "dashboard.html",
+        controller: "DashboardCtrl"
+    });
 });
-
 app.controller('NavigationCtrl', ['$scope', '$location',
-               function($scope, $location){
-                 $scope.activePage='assignments';
-                 $scope.locationService = $location;
-                 $scope.gotoDashboard = function(){
-                   $location.path('/dashboard/');
-                   $scope.activePage='dashboard';
-                 };
-                 $scope.gotoAssignments = function(){
-                   $location.path('/');
-                   $scope.activePage='assignments';
-                 };
-               }]);
+    function($scope, $location) {
+        $scope.activePage = 'assignments';
+        $scope.locationService = $location;
+        $scope.gotoDashboard = function() {
+            $location.path('/dashboard/');
+            $scope.activePage = 'dashboard';
+        };
+        $scope.gotoAssignments = function() {
+            $location.path('/');
+            $scope.activePage = 'assignments';
+        };
+    }
+]);

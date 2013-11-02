@@ -2,31 +2,35 @@
 <html>
 
 <head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+<!--    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+-->
+  <link rel="stylesheet" href="bootstrap.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css">
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css">
+-->
+    <!-- Latest compiled and minified JavaScript -->
 
-<!-- Latest compiled and minified JavaScript -->
-  
-  <link rel="stylesheet" type="text/css" href="racing.css">
+    <link rel="stylesheet" type="text/css" href="racing.css">
 
 </head>
 
 <body>
-  
+
     <div ng-app="handicapperApp">
-      
-      <nav class="navbar navbar-default" role="navigation">
-        
-    <ul class="nav navbar-nav" ng-controller="NavigationCtrl">
-      <li ng-class="{active: activePage=='dashboard'}"><a ng-click="gotoDashboard()">Dashboard</a></li>
-      <li ng-class="{active: activePage=='assignments'}"><a ng-click="gotoAssignments()">Assignments</a></li>
-    </ul>        
-      <button type="button" class="btn btn-default navbar-btn pull-right">Sign in</button>
-        
-      </nav>      
+
+        <nav class="navbar navbar-default" role="navigation" ng-controller="NavigationCtrl">
+            <a class="navbar-brand" ng-click="gotoAssignments()">Handicappers</a> 
+            <ul class="nav navbar-nav">
+                <li ng-class="{active: activePage=='assignments'}"><a ng-click="gotoAssignments()">Assignments</a>
+                </li>
+                <li ng-class="{active: activePage=='dashboard'}"><a ng-click="gotoDashboard()">Dashboard</a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-default navbar-btn pull-right">Sign in</button>
+
+        </nav>
 
         <ng-view></ng-view>
 
