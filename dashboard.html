@@ -4,20 +4,36 @@
 
 
 <div>
+    <div class="container">
 
-    <h2>
-      Handicappers  
-    </h2>
+        <div class="row">
 
-    <div class="handicapper" ng-class="{selected: handicapper==selectedHandicapper}" ng-repeat="handicapper in people.handicappers" ng-click="selectHandicapper(handicapper)">
-        {{handicapper.id}} - {{handicapper.name}}
-    </div>
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Handicappers</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="handicapper" ng-class="{selected: handicapper==selectedHandicapper}" ng-repeat="handicapper in people.handicappers" ng-click="selectHandicapper(handicapper)">
+                            {{handicapper.id}} - {{handicapper.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h2>
-      Races
-    </h2>
+            <div class="col-md-8">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Races</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="race" ng-class="{selected: race==selectedRace}" ng-repeat="race in selectedHandicapper.races" ng-click="selectRace(race)">
+                            {{race.type}} - {{race.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="race" ng-class="{selected: race==selectedRace}" ng-repeat="race in selectedHandicapper.races" ng-click="selectRace(race)">
-        {{race.type}} - {{race.name}}
+        </div>
     </div>
 </div>
