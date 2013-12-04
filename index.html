@@ -3,9 +3,9 @@
 
 <head>
     <!-- Latest compiled and minified CSS -->
-<!--    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
 -->
-  <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
 
     <!-- Optional theme -->
     <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css">
@@ -22,9 +22,10 @@
 
         <nav class="navbar navbar-default" role="navigation" ng-controller="NavigationCtrl">
             <div class="navbar-header">
-                
-            <a class="navbar-brand" ng-click="gotoAssignments()">Handicappers</a> 
-            </div><ul class="nav navbar-nav">
+
+                <a class="navbar-brand" ng-click="gotoAssignments()">Handicappers</a> 
+            </div>
+            <ul class="nav navbar-nav">
                 <li ng-class="{active: activePage=='assignments'}"><a ng-click="gotoAssignments()">Assignments</a>
                 </li>
                 <li ng-class="{active: activePage=='dashboard'}"><a ng-click="gotoDashboard()">Dashboard</a>
@@ -33,18 +34,19 @@
             <button type="button" class="btn btn-default navbar-btn pull-right">Sign in</button>
 
         </nav>
-<div class="container">
-        <ng-view></ng-view>
-</div>
+        <div class="container">
+            <ng-view></ng-view>
+        </div>
     </div>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
-    <script type="text/javascript" src="racing.js"></script>
+<!--    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-route.min.js"></script>
+    
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="racing.js"></script>
 
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="http://cdn.sencha.io/ext-4.2.0-gpl/ext-all.js"></script>
-  
+
 </body>
 
 </html>

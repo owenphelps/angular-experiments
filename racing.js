@@ -1,4 +1,4 @@
-var app = angular.module('handicapperApp', [])
+var app = angular.module('handicapperApp')
 .factory('Races', function($http) {
     console.log('Races');
     var obj = {

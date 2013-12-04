@@ -1,13 +1,13 @@
-var app = angular.module('handicapperApp');
-app.config(function($routeProvider) {
+angular.module('handicapperApp', ['ngRoute'])
+.config(function($routeProvider) {
     $routeProvider.when("/", {
         templateUrl: "assignment.html"
     }).when("/dashboard/", {
         templateUrl: "dashboard.html",
         controller: "DashboardCtrl"
     });
-});
-app.controller('NavigationCtrl', ['$scope', '$location',
+})
+.controller('NavigationCtrl', ['$scope', '$location',
     function($scope, $location) {
         $scope.activePage = 'assignments';
         $scope.locationService = $location;
@@ -20,4 +20,5 @@ app.controller('NavigationCtrl', ['$scope', '$location',
             $scope.activePage = 'assignments';
         };
     }
-]);
+])
+;
